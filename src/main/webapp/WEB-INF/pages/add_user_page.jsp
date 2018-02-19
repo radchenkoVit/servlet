@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ page isELIgnored="false" %>
-
 <html>
 <head>
     <title>Add User Page</title>
@@ -16,8 +15,6 @@
     </form>
 
     <c:set var="total" value="${totalView}"/>
-    <p>Total view of page: ${total}</p>
-    <%--<p>Total view of page: <%= request.getAttribute("totalView")%></p>--%>
-
+    <p>Total view of page: ${total.value}</p>
 </body>
 </html>

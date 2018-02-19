@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ page isELIgnored="false" %>
 
 <html>
@@ -13,10 +13,7 @@
     <p>Name: ${user.name}</p>
     <p>Phone: ${user.phone}</p>
     <p>Email: ${user.email}</p>
-    <input type="submit">
-
 
     <c:set var="total" value="${totalView}"/>
-    <p>Total view of page: ${total}</p>
-</body>
+    <p>Total view of page: ${total.value}</p></body>
 </html>

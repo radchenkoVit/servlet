@@ -2,6 +2,7 @@ package com.education.servlet;
 
 import com.education.ApplicationStorage;
 import com.education.model.User;
+import com.education.sharedContext.SimpleValue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +29,8 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int totalView = pageCounter.addAndGet(1);
-        req.setAttribute("totalView", totalView);
-        req.getRequestDispatcher("WEB-INF/pages/add_user_page.jsp").forward(req, resp);
+        req.setAttribute("totalView", new SimpleValue(totalView));
+        req.getRequestDispatcher("/WEB-INF/pages/add_user_page.jsp").forward(req, resp);
     }
 
     @Override
@@ -41,8 +42,8 @@ public class AddUserServlet extends HttpServlet {
         User user = new User(name, phone, email);
         appStorage.addUser(user);
         int totalView = displayPageCounter.addAndGet(1);
-        req.setAttribute("totalView", totalView);
+        req.setAttribute("totalView", new SimpleValue(totalView));
         req.setAttribute("userFromBack", user);
-        req.getRequestDispatcher("WEB-INF/pages/display_user_page.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/display_user_page.jsp").forward(req, resp);
     }
 }
