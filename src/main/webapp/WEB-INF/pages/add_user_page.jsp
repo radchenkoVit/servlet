@@ -7,6 +7,10 @@
 </head>
 <body>
 
+    <c:if test="${cookie.containsKey('user')}">
+        <p> Hi DEAR ${cookie['user'].value}</p>
+    </c:if>
+
     <form action="/user/add" method="post">
         <p>Name: <input name="name" type="text" placeholder="write here name"></p>
         <p>Phone: <input name="phone" type="text" placeholder="write here phone"></p>

@@ -7,7 +7,11 @@
     <title>Display User Page</title>
 </head>
 <body>
-    <p>User info</p>
+    <p>User info</p
+
+    <c:if test="${cookie.containsKey('user')}">
+        <p> Hi DEAR ${cookie['user'].value}</p>
+    </c:if>
 
     <c:set var="user" value="${userFromBack}"/>
     <p>Name: ${user.name}</p>
