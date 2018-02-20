@@ -30,7 +30,7 @@ public class DeleteUserServlet extends HttpServlet {
         try {
             deletedUser = applicationStorage.deleteUser(userId);
         } catch (NotDeletedException e){
-            req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
+            req.getRequestDispatcher(Constant.DELETE_USER_PAGE).forward(req, resp);
             return;
         }
 

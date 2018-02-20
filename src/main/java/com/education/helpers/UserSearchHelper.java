@@ -1,6 +1,7 @@
 package com.education.helpers;
 
 import com.education.ApplicationStorage;
+import com.education.exception.AutorizationException;
 import com.education.model.User;
 
 import java.util.ArrayList;
@@ -9,20 +10,20 @@ import java.util.Optional;
 
 public class UserSearchHelper {
 
-    public static User getUser(ApplicationStorage storage, String email, String password) {
+    public static User getUser(ApplicationStorage storage, String email, String password) throws AutorizationException {
         List<User> users = new ArrayList<>(storage.getAll());
 
-        Optional<User> foundUser = users.stream().filter(u -> u.getEmail().equalsIgnoreCase(email)).findFirst();
+        Optional<User> optionalUser = users.stream().filter(u -> u.getEmail().equalsIgnoreCase(email)).findFirst();
 
-        if (foundUser.isPresent()) {
-            User fuser = foundUser.get();
-            if (fuser.getPassword().equals(password)){
-                return fuser;
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            if (user.getPassword().equals(password)){
+                return user;
             } else {
-                throw new RuntimeException("Wrong Password");//TODO change exception
+                throw new AutorizationException("Wrong Password");
             }
         } else {
-            throw new RuntimeException("User is not found");//TODO change exception
+            throw new AutorizationException("User is not found");
         }
     }
 }
