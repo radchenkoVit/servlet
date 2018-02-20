@@ -1,8 +1,11 @@
 package com.education;
 
+import com.education.exception.NotDeletedException;
 import com.education.model.User;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ApplicationStorage {
@@ -14,12 +17,16 @@ public class ApplicationStorage {
         userMap.put(counter++, user);
     }
 
-    public synchronized void deleteUser(int id){
+    public synchronized User deleteUser(int id) throws NotDeletedException {
         if (userMap.containsKey(id)){
-            userMap.remove(id);
+            return userMap.remove(id);
         } else {
-            throw new RuntimeException("Not found user in storage");
+            throw new NotDeletedException("Not found user in storage");
         }
+    }
+
+    public Collection<User> getAll(){
+        return userMap.values();
     }
 
     public User getById(int id){

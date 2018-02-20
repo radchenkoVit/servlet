@@ -9,9 +9,14 @@
 
     <form action="/user/add" method="post">
         <p>Name: <input name="name" type="text" placeholder="write here name"></p>
-        <p>Phone: <input name="phone" type="text" placeholder="write here name"></p>
-        <p>Email: <input name="email" type="text" placeholder="write here name"></p>
+        <p>Phone: <input name="phone" type="text" placeholder="write here phone"></p>
+        <p>Email: <input name="email" type="text" placeholder="write here email"></p>
+        <p>Password: <input name="password" type="password" placeholder="write here pass"></p>
         <input type="submit">
+    </form>
+
+    <form action="/logout" method="get">
+        <input type="submit" value="Logout">
     </form>
 
     <c:set var="total" value="${totalView}"/>

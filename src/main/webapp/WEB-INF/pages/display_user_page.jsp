@@ -14,6 +14,10 @@
     <p>Phone: ${user.phone}</p>
     <p>Email: ${user.email}</p>
 
+    <form action="/logout" method="get">
+        <input type="submit" value="Logout">
+    </form>
+
     <c:set var="total" value="${totalView}"/>
     <p>Total view of page: ${total.value}</p></body>
 </html>

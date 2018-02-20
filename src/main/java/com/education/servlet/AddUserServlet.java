@@ -1,6 +1,7 @@
 package com.education.servlet;
 
 import com.education.ApplicationStorage;
+import com.education.Constant;
 import com.education.model.User;
 import com.education.sharedContext.SimpleValue;
 
@@ -14,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.education.Constant.STORAGE_ATTRIBUTE;
 
-@WebServlet(urlPatterns = "/user/add")
+@WebServlet(name = "addServlet", urlPatterns = "/user/add")
 public class AddUserServlet extends HttpServlet {
     private AtomicInteger pageCounter = new AtomicInteger(0);
     private AtomicInteger displayPageCounter = new AtomicInteger(0);
@@ -30,7 +31,7 @@ public class AddUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int totalView = pageCounter.addAndGet(1);
         req.setAttribute("totalView", new SimpleValue(totalView));
-        req.getRequestDispatcher("/WEB-INF/pages/add_user_page.jsp").forward(req, resp);
+        req.getRequestDispatcher(Constant.ADD_USER_PAGE).forward(req, resp);
     }
 
     @Override
@@ -38,12 +39,13 @@ public class AddUserServlet extends HttpServlet {
         String name = req.getParameter("name");
         String phone = req.getParameter("phone");
         String email = req.getParameter("email");
+        String password = req.getParameter("password");
 
-        User user = new User(name, phone, email);
+        User user = new User(name, phone, email, password);
         appStorage.addUser(user);
         int totalView = displayPageCounter.addAndGet(1);
         req.setAttribute("totalView", new SimpleValue(totalView));
         req.setAttribute("userFromBack", user);
-        req.getRequestDispatcher("/WEB-INF/pages/display_user_page.jsp").forward(req, resp);
+        req.getRequestDispatcher(Constant.DISPLAY_USER_PAGE).forward(req, resp);
     }
 }
