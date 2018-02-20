@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static com.education.Constant.INDEX_PAGE;
 import static com.education.Constant.SESSION_IS_USER_ACTIVE_ATTR_NAME;
 
 @WebServlet(urlPatterns = "/login")
@@ -50,8 +51,7 @@ public class LoginServlet extends HttpServlet {
         userCookie.setMaxAge(30*60);
         resp.addCookie(userCookie);
 
-//        req.getRequestDispatcher("index.jsp").forward(req, resp);
-        resp.sendRedirect("index.jsp");//TODO: why redirect not dispatcher, just cause we added info to session and cookie?
+        resp.sendRedirect(INDEX_PAGE);//TODO: why redirect not dispatcher, just cause we added info to session and cookie?
         //why works if index page was moved to web app package
     }
 }
