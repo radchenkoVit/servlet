@@ -1,21 +1,25 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Vitalii
+  Date: 3/6/2018
+  Time: 2:20 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
-<%@ page isELIgnored="false" %>
-
 <html>
 <head>
-    <title>Display User Page</title>
+    <title>Find User Page</title>
 </head>
 <body>
-    <p>User info</p
 
     <c:if test="${cookie.containsKey('user')}">
         <p> Hi DEAR ${cookie['user'].value}</p>
     </c:if>
-    <c:set var="user" value="${userFromBack}"/>
-    <p>Name: ${user.name}</p>
-    <p>Phone: ${user.phone}</p>
-    <p>Email: ${user.email}</p>
+
+    <form action="/user/find" method="post">
+        <input name="email" type="text" placeholder="Type user email">
+        <input type="submit" value="Find User">
+    </form>
 
     <form action="/logout" method="get">
         <input type="submit" value="Logout">
@@ -23,4 +27,5 @@
 
     <c:set var="total" value="${totalView}"/>
     <p>Total view of page: ${total.value}</p></body>
+</body>
 </html>

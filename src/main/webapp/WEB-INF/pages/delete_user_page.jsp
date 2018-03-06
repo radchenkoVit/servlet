@@ -7,6 +7,12 @@
 </head>
 <body>
 
+    <ul>
+        <li><a href="/user/add">Add User Page</a></li>
+        <li><a href="/user/delete">Delete User Page</a></li>
+        <li><a href="/user/find">Find User Page</a></li>
+    </ul>
+
     <c:if test="${cookie.containsKey('user')}">
         <p> Hi DEAR ${cookie['user'].value}</p>
     </c:if>

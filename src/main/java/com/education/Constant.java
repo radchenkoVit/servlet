@@ -9,6 +9,7 @@ public class Constant {
     public static final String DISPLAY_USER_PAGE = "/WEB-INF/pages/display_user_page.jsp";
     public static final String LOGIN_PAGE = "/login.jsp";
     public static final String INDEX_PAGE = "/index.jsp";
+    public static final String FIND_USER_PAGE = "/WEB-INF/pages/find_user_page.jsp";
     public static final String ERROR_PAGE = "/WEB-INF/pages/error_page.jsp";
 
     //sessions attributes

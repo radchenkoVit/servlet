@@ -29,7 +29,7 @@ public class AutorizationFilter implements Filter {
         HttpSession session = req.getSession(false);
 
         if(session.getAttribute(Constant.SESSION_IS_USER_ACTIVE_ATTR_NAME) == null || !session.getAttribute(Constant.SESSION_IS_USER_ACTIVE_ATTR_NAME).equals("true")) {
-            session.invalidate();//TODO: should be?
+            session.invalidate();
             resp.sendRedirect(Constant.LOGIN_PAGE);
         } else {
             chain.doFilter(request, response);

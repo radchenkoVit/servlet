@@ -11,6 +11,12 @@
         <p> Hi DEAR ${cookie['user'].value}</p>
     </c:if>
 
+    <ul>
+        <li><a href="/user/add">Add User Page</a></li>
+        <li><a href="/user/delete">Delete User Page</a></li>
+        <li><a href="/user/find">Find User Page</a></li>
+    </ul>
+
     <form action="/user/add" method="post">
         <p>Name: <input name="name" type="text" placeholder="write here name"></p>
         <p>Phone: <input name="phone" type="text" placeholder="write here phone"></p>
