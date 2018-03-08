@@ -41,13 +41,19 @@
         </div>
     </nav>
 
-    <p>User info</p
-
-    <c:if test="${cookie.containsKey('user')}">
-        <p> Hi DEAR ${cookie['user'].value}</p>
-    </c:if>
-    <c:set var="user" value="${userFromBack}"/>
-    <p>Name: ${user.name}</p>
-    <p>Phone: ${user.phone}</p>
-    <p>Email: ${user.email}</p>
+    <div class="container">
+        <c:set var="user" value="${userFromBack}"/>
+        <div class="row">
+            <div class="col-md-4">User info</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Name: ${user.name}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Phone: ${user.phone}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Email: ${user.email}</div>
+        </div>
+    </div>
 </html>

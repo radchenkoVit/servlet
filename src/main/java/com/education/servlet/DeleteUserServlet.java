@@ -26,11 +26,11 @@ public class DeleteUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int userId = Integer.parseInt(req.getParameter("userIdToDelete"));
+        String email = req.getParameter("userEmailToDelete");
 
         User deletedUser = null;
         try {
-            deletedUser = applicationStorage.deleteUser(userId);
+            deletedUser = applicationStorage.deleteUser(email);
         } catch (NotDeletedException e){
             Cookie errorMessageCookie = new Cookie("errorMessage", URLEncoder.encode( "Wasnot deleted", "UTF-8" ));
             errorMessageCookie.setMaxAge(30*60);

@@ -1,7 +1,6 @@
 package com.education.listener;
 
 import com.education.ApplicationStorage;
-import com.education.Constant;
 import com.education.model.User;
 
 import javax.servlet.ServletContext;
@@ -39,8 +38,8 @@ public class StorageDataListener implements ServletContextListener {
 
     private List<User> generateUsers(){
         User admin = new User("admin", "phone", "email", "admin");
-        User user = new User("user1", "phone", "email", "sadxzczsd");
-        User user2 = new User("user2", "phone", "email", "asdxzcsad");
+        User user = new User("user1", "phone", "email2", "sadxzczsd");
+        User user2 = new User("user2", "phone", "email3", "asdxzcsad");
 
         return Arrays.asList(admin, user, user2);
     }

@@ -40,5 +40,19 @@
             </ul>
         </div>
     </nav>
+
+    <form class="form-horizontal" action="/user/delete" method="post">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Email to delete:</label>
+            <div class="col-sm-4">
+                <input name="userEmailToDelete" type="text" class="form-control" id="email" placeholder="Enter email">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Delete User</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

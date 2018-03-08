@@ -5,8 +5,8 @@ import com.education.model.User;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class ApplicationStorage {
     private static int counter = 0;
@@ -17,9 +17,11 @@ public class ApplicationStorage {
         userMap.put(counter++, user);
     }
 
-    public synchronized User deleteUser(int id) throws NotDeletedException {
-        if (userMap.containsKey(id)){
-            return userMap.remove(id);
+    public synchronized User deleteUser(String email) throws NotDeletedException {
+        Optional<User> optionalUser = userMap.values().stream().filter(user -> user.getEmail().equals(email)).findFirst();
+
+        if (optionalUser.isPresent()){
+            return userMap.remove(optionalUser.get().getId());
         } else {
             throw new NotDeletedException("Not found user in storage");
         }
