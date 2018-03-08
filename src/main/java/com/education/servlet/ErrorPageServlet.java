@@ -7,20 +7,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static com.education.Constant.ERROR_PAGE_REDIRECT_URL;
-import static com.education.Constant.LOGIN_PAGE;
-
-@WebServlet(name = "logoutServlet", urlPatterns = "/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "errorPageServlet", urlPatterns = "/error.html")
+public class ErrorPageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //invalidate the session if exists
-        HttpSession session = req.getSession(false);
-        session.invalidate();
-        resp.sendRedirect(Constant.LOGIN_PAGE);
+        req.getRequestDispatcher(Constant.ERROR_PAGE).forward(req, resp);
     }
 }

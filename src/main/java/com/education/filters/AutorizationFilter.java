@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(servletNames = {"addServlet", "deleteServlet", "logoutServlet"})
+@WebFilter(servletNames = {"addServlet", "deleteServlet", "logoutServlet",
+        "findUserServlet", "indexServlet", "errorPageServlet"})
 public class AutorizationFilter implements Filter {
 
     @Override
@@ -28,7 +29,9 @@ public class AutorizationFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
 
-        if(session.getAttribute(Constant.SESSION_IS_USER_ACTIVE_ATTR_NAME) == null || !session.getAttribute(Constant.SESSION_IS_USER_ACTIVE_ATTR_NAME).equals("true")) {
+        if (session == null) {
+            chain.doFilter(request, response);
+        } else if(session.getAttribute(Constant.SESSION_IS_USER_ACTIVE_ATTR_NAME) == null || !session.getAttribute(Constant.SESSION_IS_USER_ACTIVE_ATTR_NAME).equals("true")) {
             session.invalidate();
             resp.sendRedirect(Constant.LOGIN_PAGE);
         } else {

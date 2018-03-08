@@ -36,7 +36,7 @@ public class FindUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = (String) req.getParameter("email");
+        String email = req.getParameter("email");
         Optional<User> oUser = applicationStorage.getAll().stream().filter(user -> user.getEmail().equalsIgnoreCase(email)).findFirst();
         if (oUser != null && oUser.isPresent()) {
             req.setAttribute("userFromBack", oUser.get());
@@ -46,8 +46,7 @@ public class FindUserServlet extends HttpServlet {
             Cookie errorMessageCookie = new Cookie("errorMessage", URLEncoder.encode( "User not found", "UTF-8" ));
             errorMessageCookie.setMaxAge(30*60);
             resp.addCookie(errorMessageCookie);
-//            resp.sendRedirect(Constant.ERROR_PAGE);
-            resp.sendRedirect(Constant.ERROR_PAGE);
+            resp.sendRedirect(Constant.ERROR_PAGE_REDIRECT_URL);
         }
     }
 }
