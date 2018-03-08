@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="/index.html">Home</a></li>
                 <li class="active"><a href="/add.html">Add User</a></li>
-                <li><a href="/user/delete">Delete User</a></li>
+                <li><a href="/deleteuser.html">Delete User</a></li>
                 <li><a href="/finduser.html">Find User</a></li>
             </ul>
             <form class="navbar-form navbar-left" action="#">

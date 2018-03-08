@@ -20,8 +20,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/index.html">Home</a></li>
                 <li><a href="/add.html">Add User</a></li>
-                <li><a href="/user/delete">Delete User</a></li>
-                <li><a href="/user/find">Find User</a></li>
+                <li><a href="/deleteuser.html">Delete User</a></li>
+                <li><a href="/finduser.html">Find User</a></li>
             </ul>
             <form class="navbar-form navbar-left" action="#">
                 <div class="input-group">
@@ -50,11 +50,4 @@
     <p>Name: ${user.name}</p>
     <p>Phone: ${user.phone}</p>
     <p>Email: ${user.email}</p>
-
-    <form action="/logout" method="get">
-        <input type="submit" value="Logout">
-    </form>
-
-    <c:set var="total" value="${totalView}"/>
-    <p>Total view of page: ${total.value}</p></body>
 </html>

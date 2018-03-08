@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="/add.html">Add User</a></li>
-                <li><a href="/user/delete">Delete User</a></li>
+                <li><a href="/deleteuser.html">Delete User</a></li>
                 <li><a href="/finduser.html">Find User</a></li>
             </ul>
             <form class="navbar-form navbar-left" action="#">

@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="/add.html">Add User</a></li>
-                <li><a href="/user/delete">Delete User</a></li>
+                <li><a href="/deleteuser.html">Delete User</a></li>
                 <li class="active"><a href="/finduser.html">Find User</a></li>
             </ul>
             <form class="navbar-form navbar-left" action="#">
@@ -48,9 +48,9 @@
 
     <form class="form-horizontal" action="/user/find" method="post">
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">email:</label>
+            <label class="control-label col-sm-2" for="email">Email to search:</label>
             <div class="col-sm-4">
-                <input name="email" type="text" class="form-control" id="email" placeholder="Enter name">
+                <input name="email" type="text" class="form-control" id="email" placeholder="Enter email">
             </div>
         </div>
         <div class="form-group">

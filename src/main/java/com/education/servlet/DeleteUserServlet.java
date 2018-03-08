@@ -4,32 +4,24 @@ import com.education.ApplicationStorage;
 import com.education.Constant;
 import com.education.exception.NotDeletedException;
 import com.education.model.User;
-import com.education.sharedContext.SimpleValue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.net.URLEncoder;
 
 @WebServlet(name = "deleteServlet", urlPatterns = "/user/delete")
 public class DeleteUserServlet extends HttpServlet {
-    private AtomicInteger pageCounter = new AtomicInteger(0);
     private ApplicationStorage applicationStorage;
 
     @Override
     public void init() throws ServletException {
         super.init();
         applicationStorage = (ApplicationStorage) getServletContext().getAttribute(Constant.STORAGE_ATTRIBUTE);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int totalView = pageCounter.addAndGet(1);
-        req.setAttribute("totalView", new SimpleValue(totalView));
-        req.getRequestDispatcher(Constant.DELETE_USER_PAGE).forward(req, resp);
     }
 
     @Override
@@ -40,7 +32,10 @@ public class DeleteUserServlet extends HttpServlet {
         try {
             deletedUser = applicationStorage.deleteUser(userId);
         } catch (NotDeletedException e){
-            req.getRequestDispatcher(Constant.DELETE_USER_PAGE).forward(req, resp);
+            Cookie errorMessageCookie = new Cookie("errorMessage", URLEncoder.encode( "Wasnot deleted", "UTF-8" ));
+            errorMessageCookie.setMaxAge(30*60);
+            resp.addCookie(errorMessageCookie);
+            resp.sendRedirect(Constant.ERROR_PAGE_REDIRECT_URL);
             return;
         }
 
