@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(servletNames = {"addServlet", "deleteServlet", "logoutServlet",
-        "findUserServlet", "indexServlet", "errorPageServlet"})
+        "findUserServlet", "indexPageServlet", "errorPageServlet", "userAddPage", "findUserPageServlet", })
 public class AutorizationFilter implements Filter {
 
     @Override

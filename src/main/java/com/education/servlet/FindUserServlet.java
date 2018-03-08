@@ -28,13 +28,6 @@ public class FindUserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int totalView = pageCounter.getAndAdd(1);
-        req.setAttribute("totalView", new SimpleValue(totalView));
-        req.getRequestDispatcher(Constant.FIND_USER_PAGE).forward(req, resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         Optional<User> oUser = applicationStorage.getAll().stream().filter(user -> user.getEmail().equalsIgnoreCase(email)).findFirst();

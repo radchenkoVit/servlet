@@ -17,7 +17,6 @@ import static com.education.Constant.STORAGE_ATTRIBUTE;
 
 @WebServlet(name = "addServlet", urlPatterns = "/user/add")
 public class AddUserServlet extends HttpServlet {
-    private AtomicInteger pageCounter = new AtomicInteger(0);
     private AtomicInteger displayPageCounter = new AtomicInteger(0);
     private ApplicationStorage appStorage;
 
@@ -25,13 +24,6 @@ public class AddUserServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         appStorage = (ApplicationStorage) getServletContext().getAttribute(STORAGE_ATTRIBUTE);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int totalView = pageCounter.addAndGet(1);
-        req.setAttribute("totalView", new SimpleValue(totalView));
-        req.getRequestDispatcher(Constant.ADD_USER_PAGE).forward(req, resp);
     }
 
     @Override

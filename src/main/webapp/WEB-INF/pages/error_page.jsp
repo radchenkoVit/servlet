@@ -13,9 +13,9 @@
 <body>
     <h1>Web site navigation</h1>
     <ul>
-        <li><a href="/user/add">Add User Page</a></li>
+        <li><a href="/add.html">Add User Page</a></li>
         <li><a href="/user/delete">Delete User Page</a></li>
-        <li><a href="/user/find">Find User Page</a></li>
+        <li><a href="/finduser.html">Find User Page</a></li>
     </ul>
 
     <c:if test="${cookie.containsKey('errorMessage')}">

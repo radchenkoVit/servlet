@@ -16,9 +16,9 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="/user/add">Add User</a></li>
+                <li><a href="/add.html">Add User</a></li>
                 <li><a href="/user/delete">Delete User</a></li>
-                <li><a href="/user/find">Find User</a></li>
+                <li><a href="/finduser.html">Find User</a></li>
             </ul>
             <form class="navbar-form navbar-left" action="#">
                 <div class="input-group">
@@ -31,13 +31,12 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hi Dear ${cookie['user'].value}</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Total view ${totalView.value}</a></li>
+                <li><a href="#"><span class="glyphicon"></span> Hi Dear ${cookie['user'].value}</a></li>
                 <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
             </ul>
         </div>
     </nav>
-
-    <h1>Web site navigation</h1>
 
 </body>
 </html>
